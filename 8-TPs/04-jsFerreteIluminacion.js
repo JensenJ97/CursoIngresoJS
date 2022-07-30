@@ -9,7 +9,252 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
 
  */
 
+ // MARCAS = ArgentinaLuz , FelipeLamparas , JeLuz , HazIluminacion , Osram
 
+ 
+ function CalcularPrecio () {
+    
+    let precioOriginal = 35;
+    let cantidadLamparas = parseInt(document.getElementById("txtIdCantidad").value);
+    let marca = document.getElementById("Marca").value;
+    let descuento = 0.5
+    let precioConDescuento = document.getElementById("txtIdprecioDescuento");
+    let impuestos = 0.10
+ 
+    if(cantidadLamparas == 5){
+            switch(marca){
+                case "ArgentinaLuz":
+                descuento = 0.40;
+                break;
+                case "FelipeLamparas":
+                case "JeLuz":
+                case "HazIluminacion":
+                case "Osram":
+                descuento = 0.30;
+                break;
+            }
+    }
+        if(cantidadLamparas == 4){
+            switch(marca){
+                case "ArgentinaLuz":
+                case "FelipeLamparas":
+                descuento = 0.25;
+                break;
+                case "JeLuz":
+                case "HazIluminacion":
+                case "Osram":
+                descuento = 0.20;
+                break;
+            }
+        }
+        if(cantidadLamparas == 3){
+             switch(marca){
+                case "ArgentinaLuz":
+                descuento = 0.15;
+                break;
+                case "FelipeLamparas":
+                descuento = 0.10;
+                break;
+                case "JeLuz":
+                case "HazIluminacion":
+                case "Osram":
+                descuento = 0.05;
+                break;
+            }
+        }
+        if (cantidadLamparas < 2) {
+        descuento = 0.0
+        }
+    
+
+    console.log(descuento)
+
+    let precioFinal = precioOriginal - (precioOriginal * descuento)
+    let totalCompra = precioFinal * cantidadLamparas;
+    if (totalCompra > 120) {
+        impuestos = impuestos * totalCompra 
+        totalCompra = totalCompra + impuestos 
+        alert("Usted pago $" + impuestos + " de IIBB")
+        console.log("$" + impuestos + " de IIBB")
+    }
+    precioConDescuento.value = totalCompra;
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /* SOLUCION SWITCH IF
+ function CalcularPrecio () {
+    
+    let precioOriginal = 35;
+    let cantidadLamparas = parseInt(document.getElementById("txtIdCantidad").value);
+    let marca = document.getElementById("Marca").value;
+    let descuento = 0.5
+    let precioConDescuento = document.getElementById("txtIdprecioDescuento");
+    let impuestos = 0.10
+ 
+    switch(cantidadLamparas){
+        case 5:
+           if(marca == "ArgentinaLuz"){
+                descuento = 0.40;
+           } else {
+                descuento = 0.30;
+            }
+        break;
+        case 4:
+            if(marca == "ArgentinaLuz" || marca == "FelipeLamparas" ) {
+                descuento = 0.25;
+            } else {
+                descuento = 0.20;
+            }
+        break;
+        case 3:
+             if(marca == "ArgentinaLuz"){
+                descuento = 0.15;
+             } else if (marca == "FelipeLamparas"){
+                descuento = 0.10;
+             }else{
+                descuento = 0.05;
+            }
+        break;
+        case 2:
+        case 1:
+        descuento = 0.0
+        break;
+    }
+
+    console.log(descuento)
+
+    let precioFinal = precioOriginal - (precioOriginal * descuento)
+    let totalCompra = precioFinal * cantidadLamparas;
+    if (totalCompra > 120) {
+        impuestos = impuestos * totalCompra 
+        totalCompra = totalCompra + impuestos 
+        alert("Usted pago $" + impuestos + " de IIBB")
+        console.log("$" + impuestos + " de IIBB")
+    }
+    precioConDescuento.value = totalCompra;
+}
+ 
+ */
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /* SOLUCION CON SWITCH
+ 
+ function CalcularPrecio () {
+    
+    let precioOriginal = 35;
+    let cantidadLamparas = parseInt(document.getElementById("txtIdCantidad").value);
+    let marca = document.getElementById("Marca").value;
+    let descuento = 0.5
+    let precioConDescuento = document.getElementById("txtIdprecioDescuento");
+    let impuestos = 0.10
+ 
+    switch(cantidadLamparas){
+        case 5:
+            switch(marca){
+                case "ArgentinaLuz":
+                descuento = 0.40;
+                break;
+                case "FelipeLamparas":
+                case "JeLuz":
+                case "HazIluminacion":
+                case "Osram":
+                descuento = 0.30;
+                break;
+            }
+        break;
+        case 4:
+            switch(marca){
+                case "ArgentinaLuz":
+                case "FelipeLamparas":
+                descuento = 0.25;
+                break;
+                case "JeLuz":
+                case "HazIluminacion":
+                case "Osram":
+                descuento = 0.20;
+                break;
+            }
+        break;
+        case 3:
+             switch(marca){
+                case "ArgentinaLuz":
+                descuento = 0.15;
+                break;
+                case "FelipeLamparas":
+                descuento = 0.10;
+                break;
+                case "JeLuz":
+                case "HazIluminacion":
+                case "Osram":
+                descuento = 0.05;
+                break;
+            }
+        break;
+        case 2:
+        case 1:
+        descuento = 0.0
+        break;
+    }
+
+    console.log(descuento)
+
+    let precioFinal = precioOriginal - (precioOriginal * descuento)
+    let totalCompra = precioFinal * cantidadLamparas;
+    if (totalCompra > 120) {
+        impuestos = impuestos * totalCompra 
+        totalCompra = totalCompra + impuestos 
+        alert("Usted pago $" + impuestos + " de IIBB")
+        console.log("$" + impuestos + " de IIBB")
+    }
+    precioConDescuento.value = totalCompra;
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* SOLUCION CON IF 
 
 function CalcularPrecio () {
     
@@ -62,4 +307,6 @@ function CalcularPrecio () {
 
 }
  	
+*/
+
 
